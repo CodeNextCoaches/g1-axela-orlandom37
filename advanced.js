@@ -3,7 +3,7 @@
   var input = document.querySelector('#axela-input'),
       submit = document.querySelector('#axela-submit'),
       message = document.querySelector('#axela-message'),
-      advancedDiv = document.querySelector('#axela-advancedDiv'),
+      advancedDiv = document.querySelector('#advanced'),
       errorText = "I don't understand you.",
       dunnoText = "I wasn't programmed to know that.",
       picture = null,
@@ -49,19 +49,44 @@
    */
    function processInput(){
 
-     if(advanceDiv.contains(picture)){
+     if(advancedDiv.contains(picture)){
        picture.removeChild();
      }
      var words = input.value.toLowerCase().trim().split(" ");
      input.value = '';
-     if(words.legnth == 1){
-       if(greeting.indexOf(words[0]))> -1)
-       message.innerHTML = 'Greetings!'
-    }else{
-       message.innerHTML = errorText;
-    }
-   }
 
+    if(words.length == 1){
+       if(greetings.indexOf(words[0]) > -1){
+         message.innerHTML = 'Greetings!'
+       } else{
+       message.innerHTML = errorText;
+        }
+    } else if (words.length == 2) {
+      switch(words[0]) {
+        case "who":
+        who(words[1]);
+        break;
+        case "what":
+        what(words[1]);
+        break;
+        case "where":
+        where(words[1]);
+        break;
+        case "tell":
+        tell(words[1]);
+        break;
+        case "show":
+        show(words[1]);
+        break;
+        case "go":
+        go(words[1]);
+        break;
+        default:
+
+
+      }
+   }
+ }
   /*
    * who(word)
    * This function sets the innerHTML of the message element to specific text,
@@ -76,26 +101,95 @@
      dunnoText, NOT errorText (since it's not an error per se, Axela just
      doesn't know what they're referring to.)
    */
+function who(word) {
+  switch (word) {
+    case 'you':
+      message.innerHTML = 'I am Billy, of course';
+      break;
+    case 'me':
+      message.innerHTML = 'A human or an animal';
+      break;
+    case 'president':
+      message.innerHTML = 'A child or a mistake';
+      break;
+    default:
+      message.innerHTML = dunnoText;
+    }
+  }
+
+  function go(word) {
+    switch (word) {
+      case 'youtube':
+        window.location = 'https://www.youtube.com/';
+        break;
+        case 'spotify':
+          window.location = 'https://www.spotify.com/us/';
+          break;
+          case 'Gmail':
+            window.location = 'https://mail.google.com/mail/u/0/#inbox';
+            break;
+      default:
+        message.innerHTML = dunnoText;
+      }
+    }
+
 
   /*
    * what(word)
    * See above.
    */
 
+   function what(word) {
+     switch (word) {
+       case 'life':
+         message.innerHTML = 'A big lie, life is nothing';
+         break;
+         case 'pi':
+           message.innerHTML = 'You eat pi or use it in math';
+           break;
+           case 'love':
+             message.innerHTML = "Baby don't hurt me don't hurt me no more";
+             break;
+       default:
+         message.innerHTML = dunnoText;
+       }
+     }
+
   /*
    * where(word)
    * See above.
    */
 
+       }
+     }
   /*
    * tell(word)
    * See above.
    */
 
-  /*
-   * show(word)
-   * See above.
-   */
+   function tell(word) {
+     switch (word) {
+       case 'joke':
+         message.innerHTML = 'What do you call a person with no body and no nose? A nobody Knows';
+         break;
+         case 'quote':
+           message.innerHTML = "'We accept the love we think we deserve'-Stephen Chbosky";
+           break;
+           case 'poem':
+            message.innerHTML = 'Roses are red<br>Violets are blue<br>I dont know the rest<br>So im done';
+             break;
+       default:
+         message.innerHTML = dunnoText;
+       }
+     }
 
-
+function show(word) {
+  switch (word) {
+    case 'dog':
+    message.innerHTML = 'Here is dog.';
+    picture = document.createElement('img');
+    picture.src = 'img/dog.png';
+    advancedDiv.appendChild(picture);
+  }
+}
 })();

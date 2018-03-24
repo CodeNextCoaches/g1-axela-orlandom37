@@ -1,12 +1,16 @@
 body {
   display: flex;
   flex-direction: row;
+  background-image: url("img/Alloy.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
 }
 
 body div {
   text-align: center;
   width: 75%;
-  border: 1px solid black;
+  border: 1px solid white;
   margin: 0 auto;
   padding: 10px;
 }
